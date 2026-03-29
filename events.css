@@ -1,0 +1,228 @@
+:root {
+  --bg: #0b0f14;
+  --surface: #121821;
+  --surface-2: #161e2e;
+  --border: rgba(255, 255, 255, 0.08);
+  --primary: #8a2be2;
+  --secondary: #00d1ff;
+  --text: #e8edf5;
+  --text-muted: #8a97a8;
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top right, rgba(138, 43, 226, 0.14), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(0, 209, 255, 0.12), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+.events-page {
+  padding: 48px 16px 64px;
+}
+
+.page-shell {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.page-head {
+  margin-bottom: 2rem;
+}
+
+.page-kicker {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: var(--secondary);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-head h1,
+.event-detail h1 {
+  margin: 0 0 0.6rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.page-head p,
+.event-copy p,
+.detail-meta,
+.event-empty {
+  color: var(--text-muted);
+}
+
+.events-list {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.event-row,
+.event-detail {
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(18, 24, 33, 0.95), rgba(16, 22, 32, 0.9));
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+}
+
+.event-row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.event-cover {
+  min-height: 220px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.28), rgba(0, 209, 255, 0.18));
+}
+
+.event-cover img,
+.detail-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-cover-fallback,
+.detail-cover-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.event-copy,
+.detail-copy {
+  padding: 1.4rem;
+}
+
+.event-tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.24rem 0.72rem;
+  border: 1px solid rgba(0, 209, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(0, 209, 255, 0.1);
+  color: var(--secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.event-copy h2 {
+  margin: 0 0 0.45rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+}
+
+.event-copy p {
+  margin: 0 0 0.9rem;
+}
+
+.detail-meta,
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+}
+
+.detail-meta span i,
+.event-meta span i {
+  margin-right: 0.45rem;
+  color: var(--secondary);
+}
+
+.event-actions,
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.action-link.primary {
+  border-color: transparent;
+  background: var(--gradient);
+  color: white;
+}
+
+.detail-cover {
+  height: min(42vw, 420px);
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.28), rgba(0, 209, 255, 0.18));
+}
+
+.detail-copy {
+  padding: 1.8rem;
+}
+
+.detail-block + .detail-block {
+  margin-top: 1.25rem;
+}
+
+.detail-block h3 {
+  margin: 0 0 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.event-empty {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 760px) {
+  .event-row {
+    grid-template-columns: 1fr;
+  }
+
+  .event-cover {
+    min-height: 180px;
+  }
+
+  .detail-cover {
+    height: 220px;
+  }
+
+  .detail-copy,
+  .event-copy {
+    padding: 1.15rem;
+  }
+}

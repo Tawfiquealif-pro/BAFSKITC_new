@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAFSKITC Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="admin.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+  <script>
+    window.bafskitc_bcrypt = { hash: function(p, s) { return Promise.resolve(dcodeIO.bcrypt.hashSync(p, s)); } };
+  </script>
+</head>
+<body>
+  <div class="admin-shell">
+    <section class="login-screen" id="loginScreen">
+      <div class="login-card">
+        <a href="index.html" class="admin-back"><i class="fas fa-arrow-left"></i> Back to Site</a>
+        <span class="admin-kicker">Admin Access</span>
+        <h1>BAFSKITC Control Panel</h1>
+        <p class="login-note">Open this page through <strong>http://127.0.0.1:3000/admin.html</strong> after starting the server with <code>node server.js</code>. If you open the HTML file directly, admin login will fail even with the correct credentials.</p>
+        <form id="loginForm" class="admin-form">
+          <label>
+            Admin ID
+            <input type="text" name="adminId" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <button type="submit" class="admin-button primary">Enter Admin Mode</button>
+        </form>
+        <p class="form-status" id="loginStatus"></p>
+      </div>
+    </section>
+
+    <section class="dashboard hidden" id="dashboard">
+      <aside class="dashboard-sidebar">
+        <div>
+          <span class="admin-kicker">Admin Mode</span>
+          <h2>BAFSKITC</h2>
+        </div>
+        <nav class="dashboard-nav">
+          <a href="#siteTextSection">Site Text</a>
+          <a href="#panelSection">Panel</a>
+          <a href="#alumniSection">Alumni</a>
+          <a href="#eventsSection">Events</a>
+          <a href="#applicantsSection">Applicants</a>
+          <a href="#adminsSection">Admins</a>
+          <a href="#databaseSection">Database</a>
+        </nav>
+        <div class="sidebar-actions">
+          <button class="admin-button" id="syncPublicView">Refresh Public Data</button>
+          <button class="admin-button danger" id="logoutButton">Logout</button>
+        </div>
+      </aside>
+
+      <main class="dashboard-main">
+        <section class="admin-section" id="siteTextSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Editable Content</span>
+              <h3>Site Text & Contact</h3>
+            </div>
+          </div>
+          <form id="siteTextForm" class="admin-form two-col">
+            <label>Club Name<input type="text" name="clubName" required /></label>
+            <label>Established Label<input type="text" name="established" required /></label>
+            <label class="full">Hero Title<textarea name="heroTitle" rows="2" required></textarea></label>
+            <label class="full">Hero Subtitle<textarea name="heroSubtitle" rows="3" required></textarea></label>
+            <label class="full">About Heading HTML<textarea name="aboutHeading" rows="2" required></textarea></label>
+            <label class="full">About Text One<textarea name="aboutTextOne" rows="3" required></textarea></label>
+            <label class="full">About Text Two<textarea name="aboutTextTwo" rows="3" required></textarea></label>
+            <label class="full">CTA Title HTML<textarea name="ctaTitle" rows="2" required></textarea></label>
+            <label class="full">CTA Text<textarea name="ctaText" rows="3" required></textarea></label>
+            <label class="full">Footer Summary<textarea name="footerSummary" rows="3" required></textarea></label>
+            <label>Email<input type="email" name="email" required /></label>
+            <label>Location<input type="text" name="location" required /></label>
+            <label>Facebook Link<input type="url" name="facebook" required /></label>
+            <label>Instagram Link<input type="url" name="instagram" required /></label>
+            <button type="submit" class="admin-button primary full">Save Site Text</button>
+          </form>
+          <p class="form-status" id="siteTextStatus"></p>
+        </section>
+
+        <section class="admin-section" id="panelSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Panel</span>
+              <h3>Manage Panel Members</h3>
+            </div>
+          </div>
+          <div class="manager-grid">
+            <div class="item-list" id="panelList"></div>
+            <form id="panelForm" class="admin-form">
+              <input type="hidden" name="id" />
+              <label>Name<input type="text" name="name" required /></label>
+              <label>Position<input type="text" name="position" required /></label>
+              <label>Facebook Link<input type="url" name="fbLink" placeholder="https://facebook.com/..." /></label>
+              <label>Image URL<input type="url" name="image" placeholder="https://..." /></label>
+              <label>Or Upload Image<input type="file" name="imageFile" accept="image/*" /></label>
+              <div class="form-actions">
+                <button type="submit" class="admin-button primary">Save Panel Member</button>
+                <button type="button" class="admin-button" id="panelReset">New Panel Member</button>
+              </div>
+            </form>
+          </div>
+          <p class="form-status" id="panelStatus"></p>
+        </section>
+
+        <section class="admin-section" id="alumniSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Alumni</span>
+              <h3>Manage Alumni</h3>
+            </div>
+          </div>
+          <div class="manager-grid">
+            <div class="item-list" id="alumniList"></div>
+            <form id="alumniForm" class="admin-form">
+              <input type="hidden" name="id" />
+              <label>Name<input type="text" name="name" required /></label>
+              <label>Position<input type="text" name="position" required /></label>
+              <label>Facebook Link<input type="url" name="fbLink" placeholder="https://facebook.com/..." /></label>
+              <label>Image URL<input type="url" name="image" placeholder="https://..." /></label>
+              <label>Or Upload Image<input type="file" name="imageFile" accept="image/*" /></label>
+              <div class="form-actions">
+                <button type="submit" class="admin-button primary">Save Alumni</button>
+                <button type="button" class="admin-button" id="alumniReset">New Alumni</button>
+              </div>
+            </form>
+          </div>
+          <p class="form-status" id="alumniStatus"></p>
+        </section>
+
+        <section class="admin-section" id="eventsSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Events</span>
+              <h3>Manage Events</h3>
+            </div>
+          </div>
+          <div class="manager-grid">
+            <div class="item-list" id="eventsList"></div>
+            <form id="eventForm" class="admin-form two-col">
+              <input type="hidden" name="id" />
+              <label>Date Day<input type="text" name="dateDay" required /></label>
+              <label>Date Month<input type="text" name="dateMonth" required /></label>
+              <label>Year<input type="text" name="year" required /></label>
+              <label>Type<input type="text" name="type" required /></label>
+              <label>Featured<select name="featured"><option value="true">Yes</option><option value="false">No</option></select></label>
+              <label class="full">Title<input type="text" name="title" required /></label>
+              <label class="full">Description<textarea name="description" rows="4" required></textarea></label>
+              <label class="full">Full Details<textarea name="details" rows="5" required></textarea></label>
+              <label>Time<input type="text" name="time" required /></label>
+              <label>Location<input type="text" name="location" required /></label>
+              <label>Image URL<input type="url" name="image" placeholder="https://..." /></label>
+              <label>Or Upload Image<input type="file" name="imageFile" accept="image/*" /></label>
+              <label class="full">Video Link<input type="url" name="video" placeholder="https://youtube.com/..." /></label>
+              <div class="form-actions full">
+                <button type="submit" class="admin-button primary">Save Event</button>
+                <button type="button" class="admin-button" id="eventReset">New Event</button>
+              </div>
+            </form>
+          </div>
+          <p class="form-status" id="eventStatus"></p>
+        </section>
+
+        <section class="admin-section" id="applicantsSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Applications</span>
+              <h3>Applicants Database</h3>
+            </div>
+          </div>
+          <div id="applicantsList" class="applicants-list"></div>
+        </section>
+
+        <section class="admin-section" id="adminsSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Admins</span>
+              <h3>Manage Admin Credentials</h3>
+            </div>
+          </div>
+          <div class="manager-grid">
+            <div class="item-list" id="adminsList"></div>
+            <form id="adminCredentialForm" class="admin-form">
+              <label>New Admin ID<input type="text" name="id" required /></label>
+              <label>New Password<input type="text" name="password" required /></label>
+              <button type="submit" class="admin-button primary">Add Admin</button>
+            </form>
+          </div>
+          <p class="form-status" id="adminsStatus"></p>
+        </section>
+
+        <section class="admin-section" id="databaseSection">
+          <div class="section-head">
+            <div>
+              <span class="admin-kicker">Database</span>
+              <h3>Stored Data</h3>
+            </div>
+          </div>
+          <div class="database-actions">
+            <button class="admin-button" id="refreshDatabaseView">Refresh JSON</button>
+          </div>
+          <textarea id="databaseOutput" class="database-output" readonly></textarea>
+          <p class="security-note">Important: this admin system now saves through the local backend and database file. It is much better than browser-only storage, but for a real public launch you should still use stronger production security and a proper hosted database.</p>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <script src="data-store.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

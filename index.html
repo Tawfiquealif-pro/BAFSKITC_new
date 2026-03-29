@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAF Shaheen College Kurmitola IT Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="grid-overlay"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="bafskitc_logo.png" alt="BAF Shaheen College Kurmitola IT Club logo" class="site-logo" />
+        <span class="logo-text" id="clubNameNav">BAF Shaheen College Kurmitola IT Club</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#panel">Panel</a></li>
+        <li><a href="#alumni">Alumni</a></li>
+        <li><a href="#contact" class="nav-cta">Join Us</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+          <span class="badge-dot"></span>
+          <span id="heroEstablished">Est. 2016</span>
+        </div>
+
+        <h1 class="hero-heading" id="heroTitle" data-aos="fade-up" data-aos-delay="200">
+          Welcome to BAF Shaheen College Kurmitola IT Club
+        </h1>
+
+        <p class="hero-sub" id="heroSubtitle" data-aos="fade-up" data-aos-delay="320">
+          A student-driven club where curiosity, creativity, and technology come together through learning, sharing, and real community.
+        </p>
+
+        <div class="hero-tagline" data-aos="fade-up" data-aos-delay="420">
+          <span>Innovate</span>
+          <span class="tag-divider">|</span>
+          <span>Build</span>
+          <span class="tag-divider">|</span>
+          <span>Lead</span>
+        </div>
+
+        <div class="hero-actions" data-aos="fade-up" data-aos-delay="500">
+          <a href="about.html" class="btn btn-primary">
+            Explore the Club
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#events" class="btn btn-ghost">
+            Upcoming Event
+          </a>
+        </div>
+
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="600">
+          <div class="stat">
+            <span class="stat-num" data-target="120">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Members</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="10">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Sessions</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="8">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Events</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-graphic" data-aos="fade-zoom-in" data-aos-delay="300">
+        <div class="hero-aurora aurora-one"></div>
+        <div class="hero-aurora aurora-two"></div>
+        <div class="hero-beam beam-one"></div>
+        <div class="hero-beam beam-two"></div>
+        <div class="hero-stage">
+          <div class="stage-ring stage-ring-outer"></div>
+          <div class="stage-ring stage-ring-middle"></div>
+          <div class="stage-ring stage-ring-inner"></div>
+          <div class="pulse-grid"></div>
+          <div class="center-icon">
+            <img src="bafskitc_logo.png" alt="Club logo" class="hero-logo" />
+          </div>
+        </div>
+        <div class="floating-card card-left">
+          <span class="floating-label">Innovation</span>
+          <strong>Creative Tech</strong>
+        </div>
+        <div class="floating-card card-right">
+          <span class="floating-label">Community</span>
+          <strong>Learn Together</strong>
+        </div>
+        <div class="floating-card card-bottom">
+          <span class="floating-label">Established</span>
+          <strong>Since 2016</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section class="features section" id="features">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">
+        <span class="label-line"></span>
+        What We Do
+        <span class="label-line"></span>
+      </div>
+
+      <h2 class="section-heading center" data-aos="fade-up" data-aos-delay="100">
+        Built for <span class="gradient-text">Builders</span>
+      </h2>
+
+      <div class="features-grid features-grid-three">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <div class="feature-glow"></div>
+          <h3>Workshops</h3>
+          <p>Hands-on sessions that help members learn important topics in technology and strengthen practical skills.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Weekly technical sessions</li>
+            <li><i class="fas fa-check"></i> Guided learning</li>
+            <li><i class="fas fa-check"></i> Skill development</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="feature-glow"></div>
+          <h3>Competitions</h3>
+          <p>Coding contests, challenges, and team activities that encourage problem solving and healthy competition.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Internal contests</li>
+            <li><i class="fas fa-check"></i> Team participation</li>
+            <li><i class="fas fa-check"></i> Campus representation</li>
+          </ul>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="feature-glow"></div>
+          <h3>Community</h3>
+          <p>A supportive network of members, seniors, and alumni who learn together and help each other move forward.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Mentorship</li>
+            <li><i class="fas fa-check"></i> Alumni connection</li>
+            <li><i class="fas fa-check"></i> Shared growth</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="events section" id="events">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">
+        <span class="label-line"></span>
+        Events
+        <span class="label-line"></span>
+      </div>
+
+      <h2 class="section-heading center" data-aos="fade-up" data-aos-delay="100">
+        Stay <span class="gradient-text">Active</span> With Us
+      </h2>
+
+      <div class="events-grid single-event" id="eventsGrid"></div>
+      <div class="events-more">
+        <a href="events.html" class="btn btn-ghost">See All Events <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="team section" id="panel">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">
+        <span class="label-line"></span>
+        Panel
+        <span class="label-line"></span>
+      </div>
+
+      <h2 class="section-heading center" data-aos="fade-up" data-aos-delay="100">
+        Meet the <span class="gradient-text">Minds</span>
+      </h2>
+      <p class="section-sub center" data-aos="fade-up" data-aos-delay="150">
+        The people guiding the club and helping the community grow.
+      </p>
+
+      <div class="team-grid" id="panelGrid"></div>
+    </div>
+  </section>
+
+  <section class="alumni section" id="alumni">
+    <div class="container">
+      <div class="section-label" data-aos="fade-up">
+        <span class="label-line"></span>
+        Alumni
+        <span class="label-line"></span>
+      </div>
+
+      <h2 class="section-heading center" data-aos="fade-up" data-aos-delay="100">
+        Alumni <span class="gradient-text">Network</span>
+      </h2>
+      <p class="section-sub center" data-aos="fade-up" data-aos-delay="150">
+        Former club members who continue to inspire and support the community.
+      </p>
+
+      <div class="alumni-grid" id="alumniGrid"></div>
+    </div>
+  </section>
+
+  <section class="cta-section section" id="contact">
+    <div class="container">
+      <div class="cta-box" data-aos="fade-up">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <span class="cta-label">Ready to build?</span>
+          <h2 id="ctaTitle">Join <span class="gradient-text">BAF Shaheen College Kurmitola IT Club</span> Today</h2>
+          <p id="ctaText">Applications are open. Be part of a community that learns, shares, and grows together.</p>
+          <div class="cta-actions">
+            <button class="btn btn-primary" id="openApplyModal" type="button">Apply Now <i class="fas fa-paper-plane"></i></button>
+            <a href="contact.html" id="contactEmailLink" class="btn btn-ghost">Contact Us <i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="apply-modal" id="applyModal" aria-hidden="true">
+    <div class="apply-modal-backdrop" id="applyModalBackdrop"></div>
+    <div class="apply-modal-panel">
+      <button class="apply-close" id="closeApplyModal" aria-label="Close application form">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="apply-head">
+        <span class="apply-kicker">New Member</span>
+        <h3>Apply to the Club</h3>
+      </div>
+      <form id="applyForm" class="apply-form">
+        <label>
+          Full Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Roll
+          <input type="text" name="roll" required />
+        </label>
+        <label>
+          Date of Birth
+          <input type="date" name="dateOfBirth" required />
+        </label>
+        <label>
+          Class
+          <input type="text" name="className" required />
+        </label>
+        <label>
+          Section
+          <input type="text" name="section" required />
+        </label>
+        <label>
+          WhatsApp Number
+          <input type="text" name="whatsapp" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Address
+          <input type="text" name="address" />
+        </label>
+        <label>
+          Facebook ID Link
+          <input type="url" name="facebookLink" />
+        </label>
+        <label>
+          Skills
+          <input type="text" name="skills" />
+        </label>
+        <label>
+          Why do you want to join?
+          <textarea name="message" rows="4"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Submit Application <i class="fas fa-paper-plane"></i></button>
+      </form>
+      <p class="apply-status" id="applyStatus"></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <img src="bafskitc_logo.png" alt="BAF Shaheen College Kurmitola IT Club logo" class="site-logo" />
+            <span class="logo-text" id="clubNameFooter">BAF Shaheen College Kurmitola IT Club</span>
+          </a>
+          <p id="footerSummary">Building the next generation of tech leaders through learning, teamwork, and creativity.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/bafskitc" id="footerFacebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/bafskitc_official/#" id="footerInstagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#panel">Panel</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h5>Get In Touch</h5>
+          <p><i class="fas fa-envelope"></i> <span id="footerEmail">bafskitc@gmail.com</span></p>
+          <p><i class="fas fa-map-marker-alt"></i> <span id="footerLocation">BAF Shaheen College Kurmitola Campus</span></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 BAF Shaheen College Kurmitola IT Club. All rights reserved.</p>
+        <p>Crafted with care by the club.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="data-store.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
