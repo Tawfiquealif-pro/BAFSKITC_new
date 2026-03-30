@@ -12,8 +12,8 @@ try {
   bcrypt = null;
 }
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.DB_HOST || "127.0.0.1";
+const PORT = Number(process.env.DB_PORT) || 3000;
 const ROOT = __dirname;
 const DB_PATH = path.join(ROOT, "data", "database.json");
 const sessions = new Map();
